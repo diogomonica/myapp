@@ -4,7 +4,8 @@
         users = User.all
         puts "sending tweets to #{users.count} users for #{last_tweet.last_id}"
         users.each do |user|
-            user.delay.tweet("@realDonaldTrump Delete your account. (via https://trumpdeleteyouraccount.com) https://twitter.com/realDonaldTrump/status/#{last_tweet.last_id}", last_tweet.last_id)
+            via = ["https://trumpdeleteyouraccount.com", "@trumpdelete"].sample
+            user.delay.tweet("@realDonaldTrump Delete your account. (via #{via}) https://twitter.com/realDonaldTrump/status/#{last_tweet.last_id}", last_tweet.last_id)
         end
    end
  end
